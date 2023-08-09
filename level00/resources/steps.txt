@@ -1,0 +1,23 @@
+First lets find if there is a file owned by the user "flag00":
+
+find / -user flag00 2>/dev/null
+->/usr/sbin/john
+
+cat /usr/sbin/john
+->cdiiddwpgswtgt
+
+Lets try a caesar cipher on it:
+...
+lmrrmmfypbfcpc
+mnssnngzqcgdqd
+nottoohardhere <--
+opuuppibseifsf
+pqvvqqjctfjgtg
+...
+
+su flag00
+password: nottoohardhere
+getflag
+token:xxxxxx
+su level01
+password:[token]

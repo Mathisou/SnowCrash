@@ -1,0 +1,12 @@
+First, use find / -name "passwd"
+
+-> /etc/passwd
+->flag01: 42hDRfypTqqnw
+
+IF CANT CAT THE FILE(not enough rights):
+-> "scp -P 4242 level01@[ip]:/etc/passwd ."
+
+now use john the ripper on that string:
+"echo "42hDRfypTqqnw" > passwd && john passwd"
+
+output: abcdefg
