@@ -1,0 +1,10 @@
+Use SCP to get the .pcap file on the host
+
+give rights to the file
+
+use WireShark to open the file
+
+Analyze -> follow tcp stream
+"show data" as hex dump
+
+now follow the password and delete what should be delete
