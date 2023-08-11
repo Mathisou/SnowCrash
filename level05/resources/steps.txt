@@ -1,0 +1,13 @@
+lets find something by using find
+
+find / -user flag05 2>/dev/null
+
+-->/usr/sbin/openarenaserver
+
+as you can see, this file execute and delete every files in /opt/openarenaserver
+
+at first we tried create scripts in the /opt/openarenaserver and we noticed that our files keep be deleted. So we wondered why, and we checked cron and double boom!! the script is executed every 2 minutes.
+
+You just have to create a shell script that execute /bin/getflag and that redirect the output in new file in /tmp/.
+
+enjoy your flag

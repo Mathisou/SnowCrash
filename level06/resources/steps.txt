@@ -1,0 +1,9 @@
+There is a php file and his binary
+
+the php file is using a function "preg_replace" using a '\e', so the content is execute as php code. 
+
+We know from here that every "[x (.*)\]" sequence will be evaluted by this preg_replace.
+
+Lets create a file containing : "[x {${exec(getflag)}}]
+
+triple booomm
