@@ -1,0 +1,13 @@
+Execute the binary
+
+Find out that it print "level07", we first thought that it prints the first arg
+
+So we used cutter to reverse engineer the binary
+
+We found out that it exec /bin/echo and the content of "LOGNAME" in env
+
+So we tried to modify his content by /bin/getflag, it printed it.
+
+Then we added && before the command so the final command looks like that : "/bin/echo && /bin/getflag"
+
+bingo.

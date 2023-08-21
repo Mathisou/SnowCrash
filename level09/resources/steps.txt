@@ -1,0 +1,20 @@
+We tried to execute the binary with the token --> seems like the output is encrypted
+
+We tried to reverse engineer it but nothing very interesting for us
+
+We tried to understand the encryption by puting some random letters and we noticed that with "aaaaa..." every characters was incremented by their index.
+
+we built a little python script as follow:
+
+```
+import sys
+
+output = ""
+for i, letter in enumerate(sys.argv[1]):
+    output +=chr(ord(letter) - i)
+print(output)
+```
+
+Some of the characters of the token were non printable so we gave to the script the output of `cat token` to decrypt the flag without copy/paste the non printable chars. --> python /tmp/script.py `cat token`
+
+quadruple booooom 

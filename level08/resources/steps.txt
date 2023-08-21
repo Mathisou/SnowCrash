@@ -1,0 +1,11 @@
+Try to exec the binary --> put the token as argument --> error
+
+use Cutter to reverse engineer it
+
+find out that we can't open it because of his name "token"
+
+create a symbolic link with a file in /tmp/. 
+
+exec the binary with this new file
+
+Booommm you can su flag08 to getflag.
