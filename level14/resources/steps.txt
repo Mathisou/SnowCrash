@@ -1,0 +1,63 @@
+There is no files in the home
+
+We checked if there is any file owned by flag14 with find / -user flag14 2>/dev/null but nothing
+
+The only thing that seems to be interesting is the getflag binary. Lets be curious and run gdb on it.
+
+At first launch we have an error "Do not reverse this" so lets disas the main to bypass this error
+
+we can see those lines :
+
+```
+0x08048989 <+67>:	call   0x8048540 <ptrace@plt>
+0x0804898e <+72>:	test   %eax,%eax
+```
+
+It checks if the return of ptrace is zero or not -->lets put a breakpoint here and print the value
+
+```
+print $eax --> -1
+```
+
+Lets modify it to bypass the check
+
+```
+set $eax=0
+c (continue)
+```
+
+Nice, we bypassed it but now we have this message :
+
+```
+Check flag.Here is your token : 
+Nope there is no token here for you sorry. Try again :)
+[Inferior 1 (process 3660) exited normally]"
+```
+
+Lets put another breakpoint at the next cmp : "0x08048b15 <+463>:	cmp    $0xbbe,%eax"
+
+It compares eax which is our uid (2014) with 0xbbe which is void
+
+Now what should we do to have access to our flag?
+
+Lets check the uid in /etc/passwd --> triple double boomm, we see that the uid of flag14 is 3014 lets try that
+
+now modify eax with 3014
+set $eax=3014
+c (continue)
+
+```
+===>    (gdb) set $eax=3014
+	(gdb) c
+	Continuing.
+	Check flag.Here is your token : XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
+	[Inferior 1 (process 3661) exited normally]
+```
+
+Now you can finish the project by redeeming it
+
+```
+su flag14
+Password: 
+Congratulation. Type getflag to get the key and send it to me the owner of this livecd :)
+```

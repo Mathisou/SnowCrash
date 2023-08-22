@@ -1,0 +1,19 @@
+Run the binary
+
+Find out that your uid has to be 4242
+
+Use gdb on it
+
+Disassemble the main using "disas main"
+
+Find out that there is a comparison : "0x0804859a <+14>:	cmp    $0x1092,%eax"
+
+break *main+14 to stop the exec right before it
+
+print $eax --> 2013 (our current uid)
+
+set $eax=4242
+
+and continue the exec (love gdb)
+
+Enjoy your flag :)

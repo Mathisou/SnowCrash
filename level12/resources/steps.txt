@@ -1,0 +1,13 @@
+The perl program is running a webserver on port 4646
+
+We can see backquotes so its executing bash commands : "@output = `egrep "^$xx" /tmp/xd 2>&1`;"
+
+The program is using 2 regex --> it first switch the pass to uppercase then delete everything after the first whitespace : "$xx =~ tr/a-z/A-Z/; $xx =~ s/\s.*//;"
+
+It means that we cant simply use the "getflag > /tmp/token" command because it will uppercase everything.
+
+So we create an exploit script shell in a file and we can do a get request as follow : 
+
+- curl localhost:4646?x='`/*/EXPLOIT`'
+
+nice job.
